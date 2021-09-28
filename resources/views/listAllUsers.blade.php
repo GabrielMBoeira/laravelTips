@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <table>
         <thead>
             <tr>
@@ -27,8 +26,10 @@
                     <td> {{ $user->email }} </td>
                     <td>
                         <a href="">Ver usuário</a>
-                        <form action="" method="post">
-                            <input type="hidden" name="user" value="">
+                        <form action=" {{ route('users.destroy', ['user' => $user->id]) }} " method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="user" value=" {{ $user->id }} ">
                             <input type="submit" value="remover">
                         </form>
                     </td>
@@ -36,7 +37,6 @@
             @endforeach
         </tbody>
     </table>
-
 </body>
 
 </html>
